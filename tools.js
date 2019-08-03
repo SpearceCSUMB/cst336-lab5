@@ -66,6 +66,7 @@ getRandomImages: function(keyword, imageCount) {
     user: "b7f6ca922e0e44",
     password: "d9ac1b46",
     database: "heroku_84e2ba2d533bf90"
+      
   });
     return conn;
   }

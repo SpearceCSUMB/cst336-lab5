@@ -26,6 +26,17 @@ app.get("/search", async function(req, res) {
   var imageURLs = await tools.getRandomImages(keyword,9);
   console.log("imageURLs: using Promise" + imageURLs);
   res.render("results", {"imageURLs": imageURLs, "keyword" : keyword});
+  
+  var sql;
+  sql = "CREATE TABLE favorites( id INT AUTO_INCREMENT, imageURL VARCHAR(250), keyword VARCHAR(25), PRIMARY KEY(id)";
+  
+  conn.connect (function(err) {
+    if (err) throw err;
+    
+    conn.query(sql, function(err, result) {
+      if (err) throw err;
+    })
+  })
 //   getRandomImages_cb( keyword, 9, function(imageURLs) {
 //       console.log("imageURLs: " + imageURLs);
 //       res.render("results", {"imageURLs": imageURLs});
@@ -89,6 +100,7 @@ app.get("/api/displayFavorites", function(req, res) {
   });//connect
   
 })
+
 // Server listener 
 app.listen("8081", "0.0.0.0", function() {
   console.log("Express server is running...");
