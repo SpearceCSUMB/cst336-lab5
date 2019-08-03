@@ -9,7 +9,6 @@ app.use(express.static("public"));
 const request = require("request");
 const mySql = require("mysql");
 const tools = require("./tools.js");
-var conn = tools.createConnection();
 // Routes
 
 //new root route
@@ -35,7 +34,7 @@ app.get("/search", async function(req, res) {
 });
 
 app.get("/api/updateFavorites", function(req, res) {
-  //var conn = tools.createConnection();
+  var conn = tools.createConnection();
   
   var sql;
   var sqlParams;
@@ -62,7 +61,7 @@ app.get("/api/updateFavorites", function(req, res) {
 
 app.get("/displayKeywords", async function(req, res) {
   var imageURLs = await tools.getRandomImages("", 1);
-  //var conn = tools.createConnection();
+  var conn = tools.createConnection();
   var sql = "SELECT DISTINCT keyword FROM `favorites` ORDER BY keyword";
   
   conn.connect( function(err) {
@@ -77,7 +76,7 @@ app.get("/displayKeywords", async function(req, res) {
 });//displayKeywords
 
 app.get("/api/displayFavorites", function(req, res) {
-  //var conn = tools.createConnection();
+  var conn = tools.createConnection();
   var sql = "SELECT imageURL FROM favorites WHERE keyword = ?"
   var sqlParams = [req.query.keyword];
   

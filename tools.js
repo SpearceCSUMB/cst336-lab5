@@ -66,18 +66,22 @@ getRandomImages: function(keyword, imageCount) {
     user: "b7f6ca922e0e44",
     password: "d9ac1b46",
     database: "heroku_84e2ba2d533bf90"
-   
-  });
-    var sql;
-    sql = "CREATE TABLE IF NOT EXISTS favorites( id INT AUTO_INCREMENT, imageURL VARCHAR(250), keyword VARCHAR(25), PRIMARY KEY(id))";
-    
-    conn.connect( function(err) {
-      if (err) throw err;
+//     host: "localhost",
+//     user: "root",
+//     password: "",
+//     database: "img_gallery"
       
-      conn.query(sql, function(err, result){
-        if (err) throw err;
-      })
-    })
+  });
+//     var sql;
+//     sql = "CREATE TABLE IF NOT EXISTS favorites( id INT AUTO_INCREMENT, imageURL VARCHAR(250), keyword VARCHAR(25), PRIMARY KEY(id))";
+    
+//     conn.connect( function(err) {
+//       if (err) throw err;
+      
+//       conn.query(sql, function(err, result){
+//         if (err) throw err;
+//       });
+//     });
     return conn;
   }
 }
