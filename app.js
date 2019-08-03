@@ -9,7 +9,6 @@ app.use(express.static("public"));
 const request = require("request");
 const mySql = require("mysql");
 const tools = require("./tools.js");
-tools.initializeDatabase();
 // Routes
 
 //new root route
