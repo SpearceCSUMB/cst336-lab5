@@ -9,11 +9,13 @@ app.use(express.static("public"));
 const request = require("request");
 const mySql = require("mysql");
 const tools = require("./tools.js");
+tools.initializeDatabase();
 // Routes
 
 //new root route
 app.get("/", async function(req, res) {
   var imageURLs = await tools.getRandomImages("",1);
+  
   //console.log("imageURLs: using Promise" + imageURLs);
   res.render("index", {"imageURLs": imageURLs});
 });
@@ -26,17 +28,6 @@ app.get("/search", async function(req, res) {
   var imageURLs = await tools.getRandomImages(keyword,9);
   console.log("imageURLs: using Promise" + imageURLs);
   res.render("results", {"imageURLs": imageURLs, "keyword" : keyword});
-  
-  var sql;
-  sql = "CREATE TABLE favorites( id INT AUTO_INCREMENT, imageURL VARCHAR(250), keyword VARCHAR(25), PRIMARY KEY(id)";
-  
-  conn.connect (function(err) {
-    if (err) throw err;
-    
-    conn.query(sql, function(err, result) {
-      if (err) throw err;
-    })
-  })
 //   getRandomImages_cb( keyword, 9, function(imageURLs) {
 //       console.log("imageURLs: " + imageURLs);
 //       res.render("results", {"imageURLs": imageURLs});

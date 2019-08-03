@@ -69,6 +69,19 @@ getRandomImages: function(keyword, imageCount) {
       
   });
     return conn;
+  },
+  
+  initializeDatabase: function() {
+    var sql;
+    sql = "CREATE TABLE favorites( id INT AUTO_INCREMENT, imageURL VARCHAR(250), keyword VARCHAR(25), PRIMARY KEY(id)";
+    
+      conn.connect (function(err) {
+    if (err) throw err;
+    
+    conn.query(sql, function(err) {
+      if (err) throw err;
+    })
+  })
   }
 }
 
