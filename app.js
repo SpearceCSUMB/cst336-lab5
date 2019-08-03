@@ -93,3 +93,7 @@ app.get("/api/displayFavorites", function(req, res) {
 app.listen("8081", "0.0.0.0", function() {
   console.log("Express server is running...");
 });
+
+app.listen(process.env.PORT, process.env.IP, function*(){
+  console.log("Running Express Server");
+});
