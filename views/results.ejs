@@ -5,13 +5,12 @@
       <a id="favLink" href="/displayKeywords"> See Favorites </a>
 </form>
 
-<% imageURLs.forEach(function(url, index) { %>
-
-<%- (index % 3 == 0) ? '<br>' : '' %>
-<div class="imageContainer">
+  <% imageURLs.forEach(function(url, index) { %>
+  <%- (index % 3 == 0) ? '<br>' : '' %>
+  <div class="imageContainer">
   <img class="image" src='<%=url%>' width='200' height='200'>
   <img class='favoriteIcon' src='img/fav_off.png' width='20'>
-</div>
-<% }) %>
+  </div>
+  <% }) %>
 
 <% include partials/footer %>

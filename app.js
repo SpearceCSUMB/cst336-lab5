@@ -86,6 +86,7 @@ app.get("/api/displayFavorites", function(req, res) {
     conn.query(sql, sqlParams, function(err, results) {
       if (err) throw err;
       res.send(results);
+      console.log("FUCK FUCK FUCK FUCK " + results);
     });//query
   });//connect
   
