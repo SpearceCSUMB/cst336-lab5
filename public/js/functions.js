@@ -28,8 +28,7 @@ $(document).ready(function() {
       success: function(rows, status) {
        $("#favorites").html("");
        rows.forEach(function(row) {
-         var appender = "<img class='image' src='"+row.imageURL +"' width='200' height='200'>" + "<img class='favoriteIcon' src='img/fav_on.png' width='20'>"
-         $("#favorites").append(appender);
+         $("#favorites").append("<img class='image' src='"+row.imageURL +"' width='200' height='200'>" + "<img class='favoriteIcon' src='img/fav_on.png' width='20'>");
        }) 
       }
   });
